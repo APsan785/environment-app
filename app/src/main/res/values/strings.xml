@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Save the Environment</string>
+    <string name="app_name">Envocons</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="available_balance"><u>Available Balance</u></string>
     <string name="calculate_link"><u>Calculate the emission</u></string>
