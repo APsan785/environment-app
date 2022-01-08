@@ -1,0 +1,295 @@
+layout
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_corners"
+        android:id="@+id/searchBarLayout"
+        >
+
+        <ImageView
+            android:id="@+id/magnify"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="10dp"
+            android:src="@drawable/ic_baseline_search_24" />
+
+        <EditText
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:layout_toEndOf="@id/magnify"
+            android:backgroundTint="#65616A"
+            android:hint="Enter Address, or ZipCode"
+            android:imeOptions="actionSearch"
+            android:inputType="textCapSentences"
+            android:shadowColor="@color/black"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            tools:text="hey"
+
+            />
+
+    </RelativeLayout>
+
+    <ImageButton
+        android:background="@drawable/gps_bg"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_gps"
+        android:layout_below="@id/searchBarLayout"
+        android:layout_alignRight="@id/searchBarLayout"
+        android:layout_marginTop="15dp"
+        android:id="@+id/gpsIcon"
+        app:tint="@color/teal_200"
+        android:scaleType="fitCenter"
+        android:padding="8dp"
+        />
+
+
+</RelativeLayout>
+
+
+
+
+
+kotlin implement onmapready, locationlistener
+
+
+val TAG = "tag"
+    private val binding by viewBinding(FragRecycleBinding::bind)
+    private lateinit var loc: ArrayList<Double>
+    val PERMISSION_ID = 111
+    private val DEFAULT_ZOOM = 15f
+
+    var location_permission_granted: Boolean = false
+    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    private var GMap: GoogleMap? = null
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        getLocationPermissions()
+    }
+
+    private fun Init() {
+        binding.searchBar.setOnEditorActionListener { textView, actionId, keyEvent ->
+            if (
+                actionId == EditorInfo.IME_ACTION_SEARCH ||
+                actionId == EditorInfo.IME_ACTION_DONE ||
+                keyEvent.action == KeyEvent.ACTION_DOWN ||
+                keyEvent.action == KeyEvent.KEYCODE_ENTER
+            ) {
+                geoLocate()
+            }
+            false
+        }
+        binding.gpsIcon.setOnClickListener {
+            Log.d(TAG, "Init: Clicked GPS Icon")
+            getDeviceLocation()
+        }
+    }
+
+    private fun geoLocate() {
+        val search_string = binding.searchBar.text.toString()
+        val geocoder = Geocoder(context)
+        lateinit var addressList: MutableList<Address>
+        try {
+            addressList = geocoder.getFromLocationName(search_string, 5)
+        } catch (e: Exception) {
+            Log.d(TAG, "geoLocate: ${e.message}")
+        }
+        if (addressList.isNotEmpty()) {
+            val address = addressList[0]
+            Log.d(TAG, "geoLocate: $address")
+            val marker = MarkerOptions()
+                .position(LatLng(address.latitude, address.longitude))
+                .title(address.getAddressLine(0))
+            GMap?.animateCamera(
+                CameraUpdateFactory.newLatLngZoom(
+                    LatLng(
+                        address.latitude,
+                        address.longitude
+                    ), DEFAULT_ZOOM
+                )
+            )
+            GMap?.addMarker(marker)
+        }
+
+    }
+
+    private fun getLocationPermissions() {
+        if (ContextCompat.checkSelfPermission(
+                context!!,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(
+                context!!,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            requestPermissions(
+                arrayOf(
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ), PERMISSION_ID
+            )
+        } else {
+            location_permission_granted = true
+            initMap()
+        }
+    }
+
+    private fun initMap() {
+        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
+    }
+
+
+    override fun onMapReady(mMap: GoogleMap) {
+        Log.d(TAG, "onMapReady: Ready")
+        GMap = mMap
+
+        GMap!!.uiSettings.isMyLocationButtonEnabled=false
+
+//        GMap!!.uiSettings.isCompassEnabled = true
+        GMap!!.uiSettings.isRotateGesturesEnabled= false
+
+        if (location_permission_granted) {
+            GMap!!.clear() //clear old markers
+            getDeviceLocation()
+
+            if (ActivityCompat.checkSelfPermission(
+                    context!!,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                    context!!,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                return
+            }
+            GMap!!.isMyLocationEnabled = true
+            Init()
+//            mMap.setOnMyLocationChangeListener {
+//
+//                val googlePlex = CameraPosition.builder()
+//                    .target(LatLng(it.latitude, it.longitude))
+//                    .zoom(10f)
+//                    .bearing(0f)
+//                    .tilt(45f)
+//                    .build()
+//
+//                mMap.addMarker(
+//                    MarkerOptions()
+//                        .position(LatLng(it.latitude, it.longitude))
+//                        .title("Spider Man")
+//                )
+//
+//
+//                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(googlePlex), 4000, null)
+//            }
+        }
+
+
+//        mMap.addMarker(
+//            MarkerOptions()
+//                .position(LatLng(loc[0], loc[1]))
+//                .title("Spider Man")
+//        )
+
+    }
+
+    private fun getDeviceLocation() {
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context!!)
+        try {
+            if (location_permission_granted) {
+                val location = fusedLocationProviderClient.lastLocation
+                location.addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        Log.d(TAG, "getDeviceLocation: Found Device Location")
+
+                        val currentLoc = it.result as Location
+
+                        GMap?.animateCamera(
+                            CameraUpdateFactory.newLatLngZoom(
+                                LatLng(currentLoc.latitude, currentLoc.longitude),
+                                DEFAULT_ZOOM
+                            )
+                        )
+                        Log.d(TAG, "getDeviceLocation: Moving camer")
+
+                    } else {
+                        Log.d(TAG, "getDeviceLocation: Current Location not found")
+                        Toast.makeText(
+                            context,
+                            "Couldn't access current location",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
+        } catch (e: SecurityException) {
+            Log.d(TAG, "getDeviceLocation: " + e.message)
+        }
+    }
+
+    override fun onLocationChanged(p0: Location) {
+        loc = arrayListOf(p0.latitude, p0.longitude)
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        if (requestCode == PERMISSION_ID) {
+            if (grantResults.isNotEmpty()) {
+                for (i in grantResults) {
+                    if (i != PackageManager.PERMISSION_GRANTED) {
+                        location_permission_granted = false
+                        return
+                    }
+                }
+                location_permission_granted = true
+            }
+        }
+    }
+
+
+    private fun locSet(map: GoogleMap) {
+        map.setOnMyLocationChangeListener {
+
+            val googlePlex = CameraPosition.builder()
+                .target(LatLng(it.latitude, it.longitude))
+                .zoom(10f)
+                .bearing(0f)
+                .tilt(45f)
+                .build()
+
+            map.animateCamera(CameraUpdateFactory.newCameraPosition(googlePlex), 4000, null)
+        }
+    }

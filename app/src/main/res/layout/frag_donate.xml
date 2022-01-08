@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="#FFBF4D"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:text="@string/donate_money"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="20dp"
+            android:text="Offset your Carbon emissions -"
+            android:textColor="#451702"
+            android:textSize="25sp" />
+
+        <ImageView
+            android:focusable="false"
+            android:longClickable="true"
+            android:id="@+id/offset_img"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="30dp"
+            android:adjustViewBounds="false"
+            android:background="@color/white"
+            android:elevation="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/carbon_offset" />
+
+
+        <TextView
+            android:id="@+id/calculate_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/calculate_link"
+            android:textColor="#0645AD"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="20dp"
+            android:text="Help us end Poaching -"
+            android:textColor="#451702"
+            android:textSize="25sp" />
+
+        <ImageView
+            android:id="@+id/poaching_img"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="30dp"
+            android:adjustViewBounds="false"
+            android:background="@color/white"
+            android:elevation="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/poaching"
+            android:layout_marginBottom="20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="20dp"
+            android:text="Solar Energy -"
+            android:textColor="#451702"
+            android:textSize="25sp" />
+
+        <ImageView
+            android:id="@+id/solar_img"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="30dp"
+            android:adjustViewBounds="false"
+            android:background="@color/white"
+            android:elevation="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/solar_pow" />
+
+      <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="20dp"
+            android:text="Afforestation -"
+            android:textColor="#451702"
+            android:textSize="25sp" />
+
+        <ImageView
+            android:id="@+id/afforest_img"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="30dp"
+            android:adjustViewBounds="false"
+            android:background="@color/white"
+            android:elevation="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/afforestation"
+            android:layout_marginBottom="20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="20dp"
+            android:text="NGOs -"
+            android:textColor="#451702"
+            android:textSize="25sp" />
+
+        <ImageView
+            android:id="@+id/ngo_img"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="30dp"
+            android:adjustViewBounds="false"
+            android:background="@color/white"
+            android:elevation="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ngo"
+            android:layout_marginBottom="20dp"
+            />
+
+
+    </LinearLayout>
+</ScrollView>

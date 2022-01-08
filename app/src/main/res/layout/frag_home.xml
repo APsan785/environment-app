@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#9F4848">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/quote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="@font/ubuntu_medium"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            tools:text="hey guys this is adarsh i m developing this app so this is the dummy quote ive to write for testing" />
+
+        <TextView
+            android:textColor="#CCABAB"
+            android:id="@+id/author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/quote"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/ubuntu_bolditalic"
+            android:textSize="18sp"
+            tools:text="- Adarsh Prajapati" />
+
+        <FrameLayout
+            android:id="@+id/recyclingTruck"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@id/author"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/tabs_recycling_bg"
+
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/ubuntu_medium"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:text="Call a Recycling\n    Truck" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:adjustViewBounds="true"
+                    android:padding="20dp"
+                    android:src="@drawable/truck" />
+
+            </RelativeLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/plasticCred"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@id/recyclingTruck"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/tabs_cred_bg">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/ubuntu_medium"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:text="Get Plastic\n    Creds" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:adjustViewBounds="true"
+                    android:padding="20dp"
+                    android:src="@drawable/money" />
+
+            </RelativeLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/oxygenArea"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@id/plasticCred"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/tabs_oxygen_bg">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/ubuntu_medium"
+                    android:text="Scan object and \n find impact on nature"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/white"
+                    android:textSize="22sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:adjustViewBounds="true"
+                    android:padding="20dp"
+                    android:src="@drawable/tree_air" />
+
+            </RelativeLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/vehicleCarbon"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@id/oxygenArea"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/tabs_vehicle_bg">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/ubuntu_medium"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:text="Check your Vehicle\n  Carbon Emission" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:adjustViewBounds="true"
+                    android:padding="20dp"
+                    android:src="@drawable/car" />
+
+            </RelativeLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/donateMoney"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@id/vehicleCarbon"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/tabs_donate_bg">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/ubuntu_medium"
+                    android:text="Donate Money for\nEnvironment projects"
+                    android:textColor="@color/white"
+                    android:textSize="22sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:adjustViewBounds="true"
+                    android:padding="20dp"
+                    android:src="@drawable/donate" />
+
+            </RelativeLayout>
+        </FrameLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

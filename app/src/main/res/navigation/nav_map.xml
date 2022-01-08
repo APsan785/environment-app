@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_map"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.apsan.environmentapp.fragments.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_plasticCredFragment"
+            app:destination="@id/plasticCredFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_recyclingFragment"
+            app:destination="@id/recyclingFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_oxygenAreaFragment"
+            app:destination="@id/oxygenAreaFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_donateFragment"
+            app:destination="@id/donateFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_vehicleCarbonFragment"
+            app:destination="@id/vehicleCarbonFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vehicleCarbonFragment"
+        android:name="com.apsan.environmentapp.fragments.VehicleCarbonFragment"
+        android:label="VehicleCarbonFragment" />
+    <fragment
+        android:id="@+id/donateFragment"
+        android:name="com.apsan.environmentapp.fragments.DonateFragment"
+        android:label="DonateFragment" >
+        <action
+            android:id="@+id/action_donateFragment_to_vehicleCarbonFragment"
+            app:destination="@id/vehicleCarbonFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/oxygenAreaFragment"
+        android:name="com.apsan.environmentapp.fragments.OxygenAreaFragment"
+        android:label="OxygenAreaFragment" />
+    <fragment
+        android:id="@+id/recyclingFragment"
+        android:name="com.apsan.environmentapp.fragments.RecyclingFragment"
+        android:label="RecyclingFragment" />
+    <fragment
+        android:id="@+id/plasticCredFragment"
+        android:name="com.apsan.environmentapp.fragments.PlasticCredFragment"
+        android:label="PlasticCredFragment" />
+</navigation>

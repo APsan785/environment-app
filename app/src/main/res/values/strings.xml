@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Save the Environment</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="available_balance"><u>Available Balance</u></string>
+    <string name="calculate_link"><u>Calculate the emission</u></string>
+    <string name="donate_money"><u>DONATE YOUR MONEY FOR ENVIRONMENT</u></string>
+    <string name="option_1">Biodiesel</string>
+    <string name="option_2">Biogas</string>
+    <string name="option_3">Diesel</string>
+    <string name="option_4">Electric</string>
+    <string name="option_5">Petrol</string>
+    <string name="option_6">Natural Gas</string>
+    <string name="option_7">Hybrid</string>
+    <string-array name="fuels">
+        <item>@string/option_1</item>
+        <item>@string/option_2</item>
+        <item>@string/option_3</item>
+        <item>@string/option_4</item>
+        <item>@string/option_5</item>
+        <item>@string/option_6</item>
+        <item>@string/option_7</item>
+    </string-array>
+    <string-array name="fuels_wit_mix">
+        <item>@string/option_4</item>
+        <item>@string/option_7</item>
+    </string-array>
+
+</resources>

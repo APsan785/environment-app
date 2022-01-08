@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:text="Calculate your Carbon emissions"
+        android:textSize="23sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="40dp"
+        android:text="1. DISTANCE TRAVELLED"
+        android:textColor="@color/black"
+        android:textSize="22sp" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/distance_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:boxStrokeColor="#41756F"
+        app:errorEnabled="false"
+        app:hintEnabled="false"
+        app:suffixText="kms">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/distance_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:paddingVertical="11dp"
+            android:textSize="19sp"
+            tools:text="heyyy"
+
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="50dp">
+
+        <TextView
+            android:id="@+id/thous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:text="+1000"
+            android:textColor="@color/teal_200"
+            />
+
+        <TextView
+            android:id="@+id/five_hund"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:text="+500"
+
+            android:textColor="@color/teal_200" />
+
+        <TextView
+            android:id="@+id/hund"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+100"
+            android:textColor="@color/teal_200"
+            android:layout_marginEnd="30dp"/>
+
+        <TextView
+            android:id="@+id/clear_dist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:text="Clear"
+
+            android:textColor="@color/teal_200" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="20dp"
+        android:text="2. FUEL TYPE"
+        android:textColor="@color/black"
+        android:textSize="22sp" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fuel_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:boxStrokeColor="#41756F"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        app:hintEnabled="false"
+        android:focusable="false"
+        >
+
+        <AutoCompleteTextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:paddingVertical="8dp"
+            android:textSize="19sp"
+            tools:text="hey"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:visibility="gone"
+        android:id="@+id/fuel_mix"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:boxStrokeColor="#41756F"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        app:hintEnabled="true"
+        android:hint="Energy Mixture"
+        >
+
+        <AutoCompleteTextView
+            android:id="@+id/fuel_mix_dropdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:textSize="19sp"
+            tools:text="hey"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="40dp"
+        android:text="3. MILEAGE"
+        android:textColor="@color/black"
+        android:textSize="22sp" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/mileage_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:boxStrokeColor="#41756F"
+        app:errorEnabled="false"
+        app:hintEnabled="false"
+        app:suffixText="kms/Litre">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/mileage_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:paddingVertical="11dp"
+            android:textSize="19sp"
+            tools:text="heyyy"
+
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/calculate_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CALCULATE"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/teal_700"
+        />
+
+    <TextView
+        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Trip :"
+        android:layout_marginStart="25dp"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/trip_summary"
+        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        tools:text="Offset a ride of 1,600 km, Fuel: Biogas"
+        android:layout_marginStart="33dp"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:text=""
+        android:id="@+id/offset_co2"
+        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="CO2 Amount : 1.5t"
+        android:layout_marginStart="33dp"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        />
+
+
+
+</LinearLayout>
